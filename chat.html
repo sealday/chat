@@ -5,19 +5,28 @@
 <body>
 <div class="container">
     <h1>聊天小程序</h1>
-    {{#each chats}}
-      {{> chat}}
-    {{/each}}
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+          {{#each chats}}
+            {{> chat}}
+          {{/each}}
+            <form class="form-inline chat" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for=""></label>
+                    <input type="text" class="form-control" name="text" id="" placeholder="say ...">
+                </div>
+                <button type="submit" class="btn btn-primary">发送</button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 
-<template name="hello">
-    <button class="btn btn-default">Click Me</button>
-    <p>You've pressed the button {{counter}} times.</p>
-</template>
-
 <template name="chat">
-    <div>
+    <div class="chat">
         <p>{{text}}</p>
     </div>
 </template>
