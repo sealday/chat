@@ -10,3 +10,9 @@ div.chat {
   padding: 8px;
   margin: 2px;
 }
+
+
+div.chat-area {
+  overflow: scroll;
+  height: 400px;
+}

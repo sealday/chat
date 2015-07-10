@@ -7,12 +7,19 @@
     <h1>聊天小程序</h1>
     <div class="row">
         <div class="col-md-4">
-
+            {{> loginButtons}}
         </div>
         <div class="col-md-4">
-          {{#each chats}}
-            {{> chat}}
-          {{/each}}
+          {{#unless currentUser}}
+              <div class="alert alert-warning">
+                  <p>您需要先登录</p>
+              </div>
+          {{/unless}}
+            <div class="chat-area">
+              {{#each chats}}
+                {{> chat}}
+              {{/each}}
+            </div>
             <form class="form-inline chat" role="form">
                 <div class="form-group">
                     <label class="sr-only" for=""></label>
@@ -21,12 +28,20 @@
                 <button type="submit" class="btn btn-primary">发送</button>
             </form>
         </div>
+        <div class="col-md-4">
+          {{#each notices}}
+              <div class="alert alert-info notice">
+                  <button type="button" class="close" data-id="{{_id}}" aria-hidden="true">&times;</button>
+                  <p>{{username}}提到我了:{{text}}</p>
+              </div>
+          {{/each}}
+        </div>
     </div>
 </div>
 </body>
 
 <template name="chat">
     <div class="chat">
-        <p>{{text}}</p>
+        <p><span>{{username}}:</span>{{text}}</p>
     </div>
 </template>
